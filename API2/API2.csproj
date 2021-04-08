@@ -9,4 +9,7 @@
     <Compile Remove="WeatherForecast.cs" />
     <Compile Remove="Controllers\WeatherForecastController.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Documentação\" />
+  </ItemGroup>
 </Project>

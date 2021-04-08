@@ -25,13 +25,14 @@ namespace SelecaoDevNetCore.Testes
             }
         }
 
-        [Fact]
-        public void TesteCalculaJuros()
+        [Theory]
+        [InlineData(100, 5, 0.01, "105,10")]
+        [InlineData(200, 6, 0.01, "212,30")]
+        [InlineData(100, 6, 0.01, "106,15")]
+        public void TesteCalculaJuros(decimal valorInicial, int meses, decimal taxa, string resultado)
         {
-            decimal valorInicial = 100;
-            _calculaJurosController._taxa = 0.01m;
-            string retorno = _calculaJurosController.GetAsync(valorInicial, 5).Result;
-            if (retorno != "105,10")
+            string retorno = _calculaJurosController.Get(valorInicial, meses, taxa);
+            if (retorno != resultado)
             {
                 throw new Exception("O cálculo está errado!");
             }
